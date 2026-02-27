@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} | Héctor Pacheco Portfolio{% endblock %}
+
+{% block meta_description %}{{ description_short }}{% endblock %}
+
+{% block body_class %}service-details-page{% endblock %}
+
+{% block content %}
+
+  <!-- Page Title -->
+  <div class="page-title dark-background">
+    <div class="container d-lg-flex justify-content-between align-items-center">
+      <h1 class="mb-2 mb-lg-0">{{ title }}</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li class="current">{{ title }}</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Certification Details Section -->
+  <section id="cert-details" class="service-details section">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-8">
+          <!-- Single Certificate Image (no carousel since usually 1 image) -->
+          {% if images and images|length > 0 %}
+            <div class="text-center mb-5">
+              <img src="{{ images[0] }}"
+                   alt="{{ title }} Certificate"
+                   class="img-fluid rounded shadow"
+                   loading="lazy"
+                   style="max-height: 600px; object-fit: contain;">
+            </div>
+          {% endif %}
+
+          <div class="content">
+            <h3>Certification Overview</h3>
+            <p>{{ description_short }}</p>
+            <p>{{ description_long }}</p>
+
+            <div class="features mt-4">
+              <h4>Key Skills & Projects</h4>
+              <div class="row gy-4">
+                {% for feature in features %}
+                  <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box d-flex align-items-center">
+                      <i class="bi bi-check"></i>
+                      <h4>{{ feature }}</h4>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            {% if protocols and protocols|length > 0 %}
+              <h4 class="mt-5">Protocols Covered</h4>
+              <div class="row gy-4 mt-4">
+                {% for proto in protocols %}
+                  <div class="col-lg-4 col-md-6">
+                    <div class="service-item position-relative text-center shadow-sm rounded p-3 bg-transparent border border-warning">
+                      <div class="icon mb-3">
+                        <img src="{{ proto.image }}" alt="{{ proto.name }}" class="img-fluid" style="max-height: 140px;">
+                      </div>
+                      <h5>{{ proto.name }}</h5>
+                      {% if proto.link %}
+                        <a href="{{ proto.link }}" target="_blank" class="service-btn">
+                          View Certificate <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="service-info">
+            <h4>Certification Information</h4>
+            <div class="info-item">
+              <i class="bi bi-clock"></i>
+              <h5>Duration</h5>
+              <p>{{ duration }}</p>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-person-check"></i>
+              <h5>Instructor / Platform</h5>
+              <p>{{ instructor }}</p>
+            </div>
+
+
+            {% if verification_link %}
+              <div class="info-item">
+                <i class="bi bi-link-45deg"></i>
+                <h5>Verification</h5>
+                <p><a href="{{ verification_link }}" target="_blank">View Certificate</a></p>
+              </div>
+            {% endif %}
+
+
+          </div>
+
+          <div class="related-services mt-5">
+            <h4>Related Certifications</h4>
+            <div class="service-item">
+              <i class="bi bi-bar-chart"></i>
+              <h5><a href="/cert-details?course=iec-paradigms">IEC Multi-Paradigm Programming</a></h5>
+              <p>Mastery of all IEC 61131-3 languages + CFC in modular industrial systems</p>
+            </div>
+            <div class="service-item">
+              <i class="bi bi-briefcase"></i>
+              <h5><a href="/cert-details?course=hmi-scada">HMI & SCADA Development</a></h5>
+              <p>Multi-platform visualization and data acquisition.</p>
+            </div>
+            <div class="service-item">
+              <i class="bi bi-graph-up"></i>
+              <h5><a href="/cert-details?course=vfd-drives">VFD Drives Configuration</a></h5>
+              <p>Tuning and integration of industrial drives.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+{% endblock %}

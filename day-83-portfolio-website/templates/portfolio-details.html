@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} | Héctor Pacheco Portfolio{% endblock %}
+
+{% block meta_description %}{{ description_short }}{% endblock %}
+
+{% block body_class %}portfolio-details-page{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+    <!-- Page Title (unchanged) -->
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">{{ title }}</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li class="current">{{ title }}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <!-- Left: Main Content -->
+          <div class="col-lg-8">
+
+            {% if project == 'backwash-system' %}
+
+              <!-- Backwash-Specific Layout -->
+              <div class="content mb-5">
+                <h3>Project Overview</h3>
+                <p>A fully automated filtration process with real-time monitoring, multi-platform HMI interfaces, and SQL-based data acquisition.</p>
+
+                <!-- Common P&ID -->
+                <div class="mt-4 text-center">
+                  <h4>System P&ID Diagram</h4>
+                  <img src="{{ images_common[0] }}" alt="Filtration & Backwash System P&ID" class="img-fluid rounded shadow" loading="lazy">
+                </div>
+
+                <p class="mt-4">
+                  <strong>Full Logic Explanation:</strong> <a href="/logic-details" class="text-primary">Click here to watch the full RSLogix 500 logic functioning</a>
+                </p>
+              </div>
+
+
+              <!-- Platform 1: Wonderware -->
+              <div class="platform-section mb-5">
+                <h3>Wonderware (InduSoft Web Studio)</h3>
+                <p>Fully integrated SCADA with SQL logging, alarm management, real-time trends, and advanced data acquisition.</p>
+                <div class="portfolio-details-slider swiper init-swiper">
+                  <script type="application/json" class="swiper-config">
+                    {"loop": true, "speed": 600, "autoplay": {"delay": 5000}, "slidesPerView": 1, "pagination": {"el": ".swiper-pagination", "type": "bullets", "clickable": true}, "navigation": {"nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev"}}
+                  </script>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-wrapper align-items-center">
+                    {% for img in wonderware_images %}
+                      <div class="swiper-slide">
+                        <img src="{{ img }}" alt="Wonderware Screen" class="img-fluid" loading="lazy">
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+                <div class="mt-5">
+                  <div class="ratio ratio-16x9">
+                    <iframe src="{{ wonderware_video }}" title="Wonderware Demo" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Platform 2: EasyBuilder -->
+              <div class="platform-section mb-5">
+                <h3>EZware – EasyBuilder 5000</h3>
+                <p>Primarily an HMI software for designing intuitive operator interfaces. Lacks built-in data acquisition but provides flexible touchscreen control and visual elements. Optimized for embedded HMI applications with direct PLC connectivity.</p>
+                <div class="portfolio-details-slider swiper init-swiper">
+                  <script type="application/json" class="swiper-config">
+                    {"loop": true, "speed": 600, "autoplay": {"delay": 5000}, "slidesPerView": 1, "pagination": {"el": ".swiper-pagination", "type": "bullets", "clickable": true}, "navigation": {"nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev"}}
+                  </script>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-wrapper align-items-center">
+                    {% for img in easybuilder_images %}
+                      <div class="swiper-slide">
+                        <img src="{{ img }}" alt="EasyBuilder Screen" class="img-fluid" loading="lazy">
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+                <div class="mt-5">
+                  <div class="ratio ratio-16x9">
+                    <iframe src="{{ easybuilder_video }}" title="EasyBuilder Demo" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- Platform 3: AdvancedHMI -->
+              <div class="platform-section mb-5">
+                <h3>AdvancedHMI (Open-Source .NET Framework)</h3>
+                <p>Uses a DF1 communication protocol for direct PLC interaction. Runs on a Windows-based system with a customizable .NET framework interface. Lacks data acquisition but provides a cost-effective HMI solution for monitoring real-time PLC data.</p>
+                <div class="portfolio-details-slider swiper init-swiper">
+                  <script type="application/json" class="swiper-config">
+                    {"loop": true, "speed": 600, "autoplay": {"delay": 5000}, "slidesPerView": 1, "pagination": {"el": ".swiper-pagination", "type": "bullets", "clickable": true}, "navigation": {"nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev"}}
+                  </script>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-wrapper align-items-center">
+                    {% for img in advancedhmi_images %}
+                      <div class="swiper-slide">
+                        <img src="{{ img }}" alt="AdvancedHMI Screen" class="img-fluid" loading="lazy">
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+                <div class="mt-5">
+                  <div class="ratio ratio-16x9">
+                    <iframe src="{{ advancedhmi_video }}" title="AdvancedHMI Demo" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+
+            {% else %}
+              <!-- Standard Layout for Other Projects -->
+              <div class="portfolio-details-slider swiper init-swiper mb-5">
+                <script type="application/json" class="swiper-config">
+                  {"loop": true, "speed": 600, "autoplay": {"delay": 5000}, "slidesPerView": 1, "pagination": {"el": ".swiper-pagination", "type": "bullets", "clickable": true}, "navigation": {"nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev"}}
+                </script>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-wrapper align-items-center">
+                  {% for img in images %}
+                    <div class="swiper-slide">
+                      <img src="{{ img }}" alt="{{ title }} Detail" class="img-fluid" loading="lazy">
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+
+              <!-- YouTube Video Embed -->
+              <div class="mt-5 mb-5">
+                <h3>Project Demo Video</h3>
+                <div class="ratio ratio-16x9">
+                  <iframe src="{{ youtube_url }}" title="{{ title }} Demo" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <!-- Project Overview & Features -->
+              <div class="content">
+                <h3>Project Overview</h3>
+                <p>{{ description_short }}</p>
+
+                <h4>Key Features</h4>
+                <ul class="list-unstyled">
+                  {% for feature in features %}
+                    <li><i class="bi bi-check-circle-fill text-primary me-2"></i>{{ feature }}</li>
+                  {% endfor %}
+                </ul>
+
+                <p class="mt-4">
+                  Watch the full simulation in action on YouTube (embedded above) to see multi-mode PLC logic, real-time adjustments, and dynamic HMI interaction.
+                </p>
+              </div>
+            {% endif %}
+
+          </div>
+
+          <!-- Right: Project Information Sidebar -->
+          <div class="col-lg-4">
+            <div class="portfolio-info" data-aos="fade-left" data-aos-delay="200">
+              <h3>Project Information</h3>
+              <ul>
+                <li><strong>Category</strong>: {{ category }}</li>
+                <li><strong>Tools</strong>: {{ tools }}</li>
+                <li><strong>Programming Languages</strong>: {{ languages }}</li>
+                <li><strong>Key Technologies</strong>: {{ technologies }}</li>
+                <li><strong>Demo Video</strong>: <a href="{{ youtube_url }}" target="_blank">Watch on YouTube</a></li>
+              </ul>
+            </div>
+
+            <div class="mt-5">
+              <a href="/#portfolio" class="btn btn-outline">← Back to All Projects</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Backwash System Logic Explanation | Héctor Pacheco Portfolio{% endblock %}
+
+{% block content %}
+
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Backwash System Logic Explanation</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="/portfolio-details?project=backwash-system">Filtration & Backwash System</a></li>
+            <li class="current">Logic Explanation</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <section id="logic-details" class="section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h3>Full System Logic & Simulation</h3>
+        <p>The filtration system operates in two primary modes: Normal Filtration and Backwash. The logic is implemented in RSLogix 500 with emulation.</p>
+
+        <!-- Constrained Video Embed -->
+        <div class="video-container mx-auto mb-5" style="max-width: 800px;">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.youtube.com/embed/FR82vrgv3To"
+              title="Backwash System Logic Simulation"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+        <h4>P&ID Breakdown</h4>
+        <p>Instruments: Flow switch (FS1), pressure transmitters (PT1, PT2), level transmitter (LT1).<br>
+        Valves: Solenoid valves (SV1–SV6), manual ball valve (BV1).<br>
+        Pump (P1): Circulates water, managed by PLC.</p>
+
+        <h4>Normal Filtration Mode</h4>
+        <p>SV1 opens, Pump 1 runs, water filtered → stored in Clean Water Tank via SV5.</p>
+
+        <h4>Backwash Mode</h4>
+        <p>On high ΔP: SV1 closes, SV2 opens, Pump 1 reverses flow to clean filter → contaminants drained.</p>
+
+        <div class="mt-5">
+          <a href="/portfolio-details?project=backwash-system" class="btn btn-outline">← Back to Project Details</a>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}
