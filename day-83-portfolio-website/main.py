@@ -3,13 +3,17 @@ from flask_mail import Mail, Message
 from dotenv import load_dotenv
 import os
 
+
+
+# Load environment variables from .env file (secret key, email credentials)
 load_dotenv()  # Load .env variables
 
 app = Flask(__name__)
+# Secret key is required for secure sessions, flash messages, and CSRF protection
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
 
 
-# Flask-Mail config (Gmail SMTP)
+# Flask-Mail configuration – uses Gmail SMTP to send real emails from the contact form
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -22,11 +26,42 @@ mail = Mail(app)
 
 @app.route('/')
 def home():
+    """
+        Renders the main portfolio homepage (index.html).
+
+        This is the entry point of the application.
+        - Serves as the landing page with hero, about, stats, skills, resume,
+          portfolio preview, certifications grid, and contact form.
+        - No dynamic data is passed — all content is static or loaded via Jinja.
+        - The sidebar navigation is visible here (controlled via base.html block).
+
+        Related:
+        - Links to /portfolio-details and /cert-details are generated in the template.
+        - Contact form POSTs to /contact route.
+        """
     return render_template('index.html')
 
 
 @app.route('/portfolio-details')
 def portfolio_details():
+    """
+        Renders a detailed view of a specific portfolio project.
+
+        How it works:
+        - Gets the 'project' parameter from the URL query string (?project=...)
+        - Uses conditional logic (if/elif) to select the correct project data.
+        - Each project passes a large dictionary of context variables to the
+          portfolio-details.html template (title, description, images, features, etc.).
+        - If no matching project is found → returns 404 "Project not found".
+
+        Purpose:
+        - Allows users to click a project card on the homepage and see full details,
+          including images, YouTube embeds, feature lists, tools/languages used.
+
+        Related:
+        - Called from index.html portfolio section links (e.g. /portfolio-details?project=tia-hydro)
+        - Uses the same portfolio-details.html template for all projects.
+        """
     project = request.args.get('project')
 
     # Defaults for non-backwash projects
@@ -158,6 +193,22 @@ def portfolio_details():
 
 @app.route('/logic-details')
 def logic_details():
+    """
+        Renders a dedicated explanation page for the logic behind the Backwash Filtration System.
+
+        Purpose:
+        - Provides users with a focused, in-depth look at the RSLogix 500 logic and simulation
+          of the "Advanced Filtration & Backwash System" project.
+        - Displays a main YouTube simulation video, P&ID breakdown, mode explanations
+          (Normal Filtration vs Backwash), and instrument/valve details.
+        - Acts as a "deep dive" companion page linked from the project detail view.
+
+        How it works:
+        - Static route — no query parameters or dynamic data needed.
+        - Simply renders logic-details.html with no context variables passed.
+        - The template handles all content: embedded YouTube iframe, text explanations,
+          and a "Back to Project Details" link.
+        """
     return render_template('logic-details.html')
 
 
@@ -165,11 +216,41 @@ def logic_details():
 
 @app.route('/assets/<path:filename>')
 def assets(filename):
+    """
+        Serves static files from the 'assets' folder (images, CSS, JS, fonts, etc.).
+
+        This is a custom static file handler.
+        - Allows Flask to serve files like /assets/img/projects/tia-hydro/detail-1.jpg
+        - Prevents needing to use url_for('static', filename=...) in every template.
+
+        Security note: <path:filename> allows subdirectories (e.g. assets/img/...).
+
+        Related:
+        - Used heavily in all templates for images, CSS, vendor files.
+        """
     return send_from_directory('assets', filename)
 
 
 @app.route('/cert-details')
 def cert_details():
+    """
+        Renders a detailed view of a specific certification/course.
+
+        How it works:
+        - Gets the 'course' parameter from the URL (?course=...)
+        - Uses if/elif chain to match the course and pass detailed context:
+          title, short/long description, images, features list, duration, instructor, link.
+        - Special case for 'comm-protocols': passes a list of protocol dictionaries
+          (used to render a grid of protocol cards with images/links).
+        - If no match → returns 404 "Certification not found".
+
+        Purpose:
+        - Lets users click a certification card on the homepage and see full details.
+
+        Related:
+        - Called from index.html certifications section (e.g. /cert-details?course=tia-portal)
+        - Uses cert-details.html template for all courses.
+        """
     course = request.args.get('course')
 
     if course == 'tia-portal':
@@ -337,6 +418,26 @@ def cert_details():
 
 @app.route('/contact', methods=['POST'])
 def contact():
+    """
+        Handles POST requests from the contact form on the homepage.
+
+        Workflow:
+        1. Extracts form data: name, email, subject (optional), message.
+        2. Validates required fields (name + email).
+        3. Builds a clean, styled HTML email body with sender info + user message.
+        4. Sends email via Flask-Mail (to yourself) with both plain text fallback and HTML version.
+        5. On success: flashes green success message.
+        6. On failure (SMTP error, etc.): flashes red error message with details.
+        7. Redirects back to homepage + #contact anchor (so user sees the flash).
+
+        Security:
+        - Uses Gmail App Password (never store real password).
+        - No user data is stored — only emailed to yourself.
+
+        Related:
+        - Form in index.html → action="{{ url_for('contact') }}" method="post"
+        - Uses flash() + get_flashed_messages() in template for user feedback.
+        """
     name = request.form.get('name')
     email = request.form.get('email')
     subject = request.form.get('subject', 'Contact Form Message')
@@ -390,4 +491,10 @@ def contact():
 
 
 if __name__ == '__main__':
+    """
+        Entry point of the Flask application.
+
+        - Runs the development server on port 5000 with debug mode enabled.
+        - Debug=True enables auto-reload and detailed error pages 
+        """
     app.run(debug=True, port=5000)
