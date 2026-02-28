@@ -1,54 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Professional Portfolio</title>
-<!--  This is the short summary (usually 150–160 characters) that Google, Bing, and other search engines
-often display under your page title in search results.-->
-  <meta name="description" content="Héctor Pacheco Solís – PLC & SCADA Engineer | Industrial Automation Specialist with 7+ years in PLC programming (Siemens TIA Portal, Allen-Bradley, ABB), HMI/SCADA development, industrial networking (Modbus, BACnet, Ethernet/IP, DNP3), and Python for process optimization and data tools. Cancún, Quintana Roo, México.">
-<!--  Purpose (historical): In the early 2000s, search engines used this list of words to understand page topics.-->
-  <meta name="keywords" content="">
+{% block title %}Héctor Pacheco Portfolio{% endblock %}
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+{% block meta_description %}
+Héctor Pacheco Solís – PLC & SCADA Engineer | Industrial Automation Specialist
+{% endblock %}
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-                <!--  Without it → the whole site would look broken-->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-                <!-- Official Bootstrap Icons library (v1.x or similar).-->
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-                <!--  Animate On Scrol-->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-                <!--  Powers the image zoom/pop-up effect-->
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-                <!--  Purpose: Handles the image sliders/carousels-->
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-
-  <!-- Import Bootstrap CSS stylesheet from CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous"
-  >
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-</head>
-
-
-<body class="index-page">
+{% block body_class %}index-page{% endblock %}
 
 
 
-
-
+{% block sidebar_nav %}
 <!-- LEFT SIDE NAV MENU           ##############################################################-->
 <header id="header" class="header dark-background d-flex flex-column justify-content-center">
   <i class="header-toggle d-xl-none bi bi-list"></i>
@@ -80,15 +42,14 @@ often display under your page title in search results.-->
   </div>
 </header>
 
-
+{% endblock %}
 
 
 
 <!--------------------------------------------------------------------------------------------------------------->
-  <main class="main">
 
 
-
+{% block content %}
     <!-- Hero Section             ############################################################## -->
     <section id="hero" class="hero section">
 
@@ -2103,61 +2064,4 @@ Web & Markup Languages,5,"HTML5, CSS3, Bootstrap 5, JavaScript (basic), Git/vers
 
 
 
-  </main>
-
-
-
-
-
-
-
-
-
-
-
-<!-- FOOTER              ############################################################## -->
-  <footer id="footer" class="footer position-relative">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
-      </div>
-    </div>
-
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <!-- These scripts import various JavaScript libraries that add interactive and dynamic features to the site,
-  including Bootstrap's core functionality, scroll-triggered animations (AOS), typing effects (Typed.js),
-  number counters (Purecounter), layout filtering (Isotope), image lightboxes (Glightbox), and sliders (Swiper). -->
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
-</html>
+{% endblock %}
