@@ -213,7 +213,7 @@ marimo/_lsp/
 __marimo__/
 
 # Streamlit
-.streamlit/secrets.tomltemplates/starter-page.html
+.streamlit/secrets.toml
 
-
-templates/starter-page.html
+# Custom ignored files
+day-83-portfolio-website/templates/starter-page.html
