@@ -2,6 +2,8 @@
 
 Desktop GUI application built with Tkinter as part of Dr. Angela Yu's 100 Days of Code Python Bootcamp.
 
+![Typing Speed Test](screenshot.png)
+
 ## Features
 - 60-second typing test
 - Starts timer on first keystroke
