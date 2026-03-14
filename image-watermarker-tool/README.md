@@ -4,6 +4,9 @@ Desktop GUI application built with **Python + Tkinter + Pillow** that allows you
 
 Perfect for batch-preparing images for social media (Instagram, etc.) with your branding.
 
+![Main interface of Image Watermarker app](screenshot.png)
+
+
 ## Features
 
 - Upload main image (JPG, PNG, etc.)
