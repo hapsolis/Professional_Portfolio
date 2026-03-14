@@ -1,24 +1,18 @@
-# Professional Portfolio – Héctor Solís (@chekollo)
+# Professional Portfolio
 
-Self-taught Python developer completing Dr. Angela Yu's 100 Days of Python course (Days 81–100: Professional Portfolio Projects).
+Collection of Python projects built during learning and personal development.
 
-These projects are fully self-directed — no tutorial hand-holding — to build real-world skills and a strong portfolio.
+## 100 Days of Code – Python Bootcamp (Dr. Angela Yu)
 
-## Portfolio Projects (Days 81–100)
+Completed the full challenge. Highlights:
 
-- **[Day 82: Morse Code Converter](Day_82_Morse_Converter)**  
-  Command-line tool that converts text (letters A-Z + numbers 0-9) to International Morse Code. Interactive loop, word separation with `/`.
+- **Day 82** – [Morse Code Encoder/Decoder](./morse-code-encoder-decoder)
+- **Day 83** – [Personal Portfolio Website](./personal-portfolio-website)
+- **Day 84** – [Tic-Tac-Toe Game](./tic-tac-toe-game)
+- **Day 85** – [Image Watermarker Desktop Tool](./image-watermarker-tool)
+- **Day 86** – [Typing Speed Tester (Tkinter GUI)](./typing-speed-tester)
 
-More projects coming soon!
+More projects coming...
 
-## Skills Demonstrated
-- Python 3 (dictionaries, loops, string manipulation, user input)
-- CLI development
-- Git & GitHub for version control
-- Coming soon: OOP, APIs, web apps (Flask), GUI (Tkinter), data analysis
-
-Connect & follow:  
-- X/Twitter: [@chekollo](https://x.com/chekollo)  
-- Let's talk Python!
-
-#100DaysOfCode #Python #SelfTaughtDeveloper
+## Other Projects
+...

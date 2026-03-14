@@ -216,4 +216,4 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Custom ignored files
-day-83-portfolio-website/templates/starter-page.html
+personal-portfolio-website/templates/starter-page.html
