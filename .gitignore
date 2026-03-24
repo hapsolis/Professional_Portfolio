@@ -218,5 +218,3 @@ __marimo__/
 # Custom ignored files
 personal-portfolio-website/templates/starter-page.html
 
-# Ignore image assets
-*.png
