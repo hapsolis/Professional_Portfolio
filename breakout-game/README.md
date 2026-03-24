@@ -2,6 +2,8 @@
 
 Classic Atari 1976 Breakout clone built with Python's **turtle** module during Dr. Angela Yu's 100 Days of Code Python Bootcamp.
 
+![Main interface of the Breakout Game app](breakout.png)
+
 ## Features
 - Smooth paddle control (Arrow keys)
 - Realistic angled bounces based on paddle hit position
