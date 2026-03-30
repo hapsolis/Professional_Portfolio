@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+                                             <!-- Hero Section -->
+
+    <div class="text-center py-1 bg-light rounded-3 mb-2">
+
+        <h1 class="display-4 fw-bold cafe-title">
+            Find the Best Cafés with WiFi in London
+        </h1>
+        <p class="lead text-muted">Discover great places to work remotely with good coffee and reliable internet.</p>
+
+        <a href="{{ url_for('add_cafe') }}" class="btn btn-primary btn-lg mt-1">
+            <i class="bi bi-bookmark-plus"></i> Add New Café
+        </a>
+
+    </div>
+
+                                        <!--  Search bar using GET form  -->
+
+<!--    method="get" → the browser tacks the form fields onto the URL as a query string -->
+    <form action="{{ url_for('home') }}" method="GET" class="row g-3 mb-2 justify-content-center">
+
+        <div class="col-4">
+            <input
+                    type="text"
+                    name="loc"
+                    class="form-control shadow border-primary"
+                    placeholder="Search by location (e.g. Peckham)"
+            >
+        </div>
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-secondary">Search</button>
+        </div>
+
+    </form>
+
+
+                                                <!-- Cafes Table -->
+
+    <h2 class="mb-4">All Cafés <span class="text-muted fs-5">({{ cafes|length }} total)</span></h2>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Café</th>
+                    <th>Location</th>
+                    <th>Amenities</th>
+                    <th>Seats</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                {% for cafe in cafes %}
+
+                <tr>
+                    <td>
+
+                                    <!-- With error handling  -->
+                        <img src="{{ cafe.img_url }}" alt="{{ cafe.name }}"
+                             class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;"
+                             loading="lazy"
+                             onerror="this.src='https://media.istockphoto.com/id/654248756/photo/hot-coffee-retro-alarm-clock.jpg?s=2048x2048&w=is&k=20&c=vugHimYEhlBR8KfiTRKFNrJRedzJuyZCqD6WBwlPNqo=';"
+                        >
+
+                        <a href="{{ cafe.map_url }}" target="_blank" class="fw-bold text-decoration-none">
+                            <i class="bi bi-bookmark-fill"></i> {{ cafe.name }}
+                        </a>
+                    </td>
+
+                    <td>{{ cafe.location }}</td>
+                    <td>
+                        <div class="d-flex gap-2">
+
+                            {% if cafe.has_wifi %}
+                                <span class="badge bg-success" title="WiFi Available"><i class="bi bi-wifi"></i></span>
+                            {% endif %}
+
+                            {% if cafe.has_sockets %}
+                                <span class="badge bg-warning" title="Power Sockets"><i class="bi bi-plug"></i></span>
+                            {% endif %}
+
+                            {% if cafe.has_toilet %}
+                                <span class="badge bg-info" title="Toilet"><i class="bi bi-door-open"></i></span>
+                            {% endif %}
+
+                            {% if cafe.can_take_calls %}
+                                <span class="badge bg-primary" title="Can Take Calls"><i class="bi bi-telephone"></i></span>
+                            {% endif %}
+
+                        </div>
+                    </td>
+
+                    <td>{{ cafe.seats }}</td>
+
+                    <td>
+                        <strong>{{ cafe.coffee_price }}</strong>
+                    </td>
+
+                                        <!-- Delete Rout Call  -->
+                    <td>
+                        <a href="{{ url_for('delete_cafe', cafe_id=cafe.id) }}"
+                           class="btn btn-outline-danger btn-sm"
+                           onclick="return confirm('Delete {{ cafe.name }}? This action cannot be undone.')">
+
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if not cafes %}
+        <div class="alert alert-info text-center">
+            No cafés found in the database.
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}

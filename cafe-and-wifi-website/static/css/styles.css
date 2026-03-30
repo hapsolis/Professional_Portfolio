@@ -1,0 +1,46 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+.table th {
+    font-weight: 600;
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+}
+
+img {
+    border: 2px solid #dee2e6;
+}
+
+.alert {
+    border-radius: 8px;
+}
+
+/* Hover effect on table rows */
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+
+.cafe-title {
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
