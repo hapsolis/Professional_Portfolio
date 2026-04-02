@@ -1,0 +1,26 @@
+
+body { background-color: #f8f9fa; }
+
+.task-card {
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.priority-high { border-left: 5px solid #dc3545; }
+.priority-medium { border-left: 5px solid #ffc107; }
+.priority-low { border-left: 5px solid #0d6efd; }
+
+.coiny-regular {
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}

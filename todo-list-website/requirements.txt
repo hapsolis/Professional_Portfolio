@@ -1,0 +1,6 @@
+Flask==3.0.*
+Flask-SQLAlchemy==3.1.*
+Flask-WTF==1.2.*
+WTForms==3.1.*
+Bootstrap-Flask==2.3.*   # For easier Bootstrap integration (optional but nice)
+python-dotenv==1.0.*
