@@ -2,13 +2,6 @@
 # This is a professional To do List application built with Flask.
 # It demonstrates full CRUD operations with SQLAlchemy, responsive Bootstrap 5 design,
 # form validation with WTForms, and user feedback via flash messages.
-#
-# Why this structure? Same professional pattern as Day 88 Café & WiFi:
-# - Clear separation of concerns (models, routes, forms)
-# - Constants at the top
-# - Detailed comments explaining "why" and "how"
-# - Flash messages for better UX
-# - Responsive design that works on mobile/desktop
 
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
