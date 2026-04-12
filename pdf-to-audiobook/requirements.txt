@@ -1,0 +1,3 @@
+edge-tts==7.2.8        # Microsoft Edge neural TTS (best free voices + speed control)
+PyPDF2>=3.0.0          # Reliable text extraction from PDF files
+tkinterdnd2==0.4.2     # Drag & drop support for Tkinter (modern UX)
