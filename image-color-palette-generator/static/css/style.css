@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    min-height: 100vh;
+}
+
+.upload-area {
+    transition: all 0.3s ease;
+    background: rgba(26, 40, 236, 0.05);
+    /* This line  make the border dashed and override any other border styles */
+    border-style: dashed ;
+
+    border-width: 5px; 
+    border-color: rgba(47, 15, 209, 0.874);
+}
+
+.upload-area:hover {
+    border-color: #cd7e10;
+    transform: translateY(-15px);
+}
+
+.color-swatch {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color-swatch:hover {
+    /*  makes the box grow by 5% */
+    transform: scale(1.05);
+    /* Creates a shadow (10px down, 20px blur) with a 30% transparent black color. */
+    box-shadow: 0 0px 40px rgba(56, 25, 233, 0.845) ;
+}
+
+.card {
+    background: #2304bf;
+}
+
+.card.shadow {
+    box-shadow: 0 10px 30px rgba(21, 7, 215, 0.675) !important;
+}
